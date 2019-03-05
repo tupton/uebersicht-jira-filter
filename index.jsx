@@ -72,12 +72,15 @@ const params = {
 
 url.search = new URLSearchParams(params);
 
-const auth = base64.encode(`${config.username}:${config.password}`);
-export const command = dispatch => fetch(url, {
-  headers: {
+const opts = {};
+if (typeof config.username !== 'undefined' && typeof config.password !== 'undefined') {
+  const auth = base64.encode(`${config.username}:${config.password}`);
+  const headers = {
     Authorization: `Basic ${auth}`,
-  },
-})
+  };
+  opts.headers = headers;
+}
+export const command = dispatch => fetch(url, opts)
   .then((response) => {
     if (response.ok) {
       return response.json();
