@@ -8,9 +8,7 @@
   "private": true,
   "dependencies": {
     "base-64": "^0.1.0",
-    "eslint": "^4.19.1",
-    "prop-types": "^15.7.2",
-    "react": "^16.8.3"
+    "eslint": "^4.19.1"
   },
   "devDependencies": {
     "eslint-config-airbnb": "^17.1.0",
