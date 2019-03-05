@@ -1,7 +1,7 @@
 import { styled } from 'uebersicht';
 import { auth } from './config';
 
-export const refreshFrequency = false;
+export const refreshFrequency = 1.8e6; // 30m
 
 export const className = `
   left: 2rem;
