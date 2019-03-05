@@ -4,8 +4,8 @@ import { auth } from './config';
 export const refreshFrequency = false;
 
 export const className = `
-  left: 5rem;
-  top: 5rem;
+  left: 2rem;
+  top: 2rem;
   color: white;
   font-family: -apple-system;
   z-index: 1;
@@ -16,18 +16,18 @@ const IssueList = styled('ul')`
   flex-direction: column;
   justify-content: space-between;
   margin: 0;
-  padding: 0;
+  padding: 0.25rem;
+  border: 1px solid #999;
+  -webkit-border-radius: 5px;
+  background-color: rgba(85, 85, 85, 0.7);
   list-style-type: none;
 `;
 
 const Item = styled('li')`
-  margin: 0.5rem 0;
-  padding: 0.5rem;
-  border: 1px solid #999;
-  -webkit-border-radius: 5px;
-  background-color: rgba(85, 85, 85, 0.7);
+  margin: 0.25rem 0;
   display: inline-flex;
   align-items: center;
+  justify-content: flex-start;
 `;
 
 const Type = styled('img')`
@@ -102,8 +102,10 @@ const Issue = ({ issuekey, summary, issuetype, status }) => (
 
 /*
 Issue.propTypes = {
-  key: PropTypes.string.isRequired,
+  issuekey: PropTypes.string.isRequired,
   summary: PropTypes.string.isRequired,
+  issuetype: PropTypes.object.isRequired,
+  status: PropTypes.object.isRequired
 };
 */
 
