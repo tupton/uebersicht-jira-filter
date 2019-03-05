@@ -101,7 +101,7 @@ const Issue = ({
 }) => {
   const issueLink = `https://${config.jira_domain}/browse/${issuekey}`;
   return (
-    <Item key={issuekey}>
+    <Item>
       <Type src={issuetype.iconUrl} />
       <Key href={issueLink}>{issuekey}</Key>
       <Summary href={issueLink}>{summary}</Summary>
@@ -121,7 +121,7 @@ Issue.propTypes = {
 
 export const render = ({ issues = [] }) => (
   <IssueList>
-    {issues.map(({ key, fields }) => (<Issue issuekey={key} {...fields} />))}
+    {issues.map(({ key, fields }, idx) => (<Issue key={idx} issuekey={key} {...fields} />))}
   </IssueList>
 );
 
