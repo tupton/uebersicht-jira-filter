@@ -1,6 +1,6 @@
 {
-    "username": "user@domain.com",
-    "password": "p@ssw0rd",
-    "jira_domain": "jira.com",
-    "jira_filter": "-1"
+    "username": "",
+    "password": "",
+    "jira_domain": "jira.atlassian.com",
+    "jira_filter": "17531"
 }

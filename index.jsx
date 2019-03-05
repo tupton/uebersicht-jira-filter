@@ -80,7 +80,7 @@ const params = {
 url.search = new URLSearchParams(params);
 
 const opts = {};
-if (typeof config.username !== 'undefined' && typeof config.password !== 'undefined') {
+if (config.username && config.password) {
   const auth = base64.encode(`${config.username}:${config.password}`);
   const headers = {
     Authorization: `Basic ${auth}`,
