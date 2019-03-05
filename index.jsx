@@ -98,14 +98,17 @@ const Issue = ({
   summary,
   issuetype,
   status,
-}) => (
-  <Item key={issuekey}>
-    <Type src={issuetype.iconUrl} />
-    <Key href={`https://datastax.jira.com/browse/${issuekey}`}>{issuekey}</Key>
-    <Summary href={`https://datastax.jira.com/browse/${issuekey}`}>{summary}</Summary>
-    <Status>{status.name}</Status>
-  </Item>
-);
+}) => {
+  const issueLink = `https://${config.jira_domain}/browse/${issuekey}`;
+  return (
+    <Item key={issuekey}>
+      <Type src={issuetype.iconUrl} />
+      <Key href={issueLink}>{issuekey}</Key>
+      <Summary href={issueLink}>{summary}</Summary>
+      <Status>{status.name}</Status>
+    </Item>
+  );
+};
 
 /*
 Issue.propTypes = {
