@@ -1,0 +1,124 @@
+import { styled } from 'uebersicht';
+import { auth } from './config';
+
+export const refreshFrequency = false;
+
+export const className = `
+  left: 5rem;
+  top: 5rem;
+  color: white;
+  font-family: -apple-system;
+  z-index: 1;
+`;
+
+const IssueList = styled('ul')`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+`;
+
+const Item = styled('li')`
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border: 1px solid #999;
+  -webkit-border-radius: 5px;
+  background-color: rgba(85, 85, 85, 0.7);
+  display: inline-flex;
+  align-items: center;
+`;
+
+const Type = styled('img')`
+  padding: 0 0.5rem 0 0;
+  margin: 0;
+`;
+
+const Status = styled('span')`
+  padding: 0 0.5rem 0 0;
+  margin: 0;
+  font-variant: small-caps;
+  font-size: 0.5em;
+  color: rgba(200, 200, 200, 1.0);
+`;
+
+const Key = styled('a')`
+  padding: 0 0.5rem 0 0;
+  margin: 0;
+  color: rgba(200, 200, 200, 1.0);
+  text-decoration: none;
+`;
+
+const Summary = styled('a')`
+  padding: 0 0.5rem 0 0;
+  margin: 0;
+  color: white;
+  text-decoration: none;
+`;
+
+const url = new URL('http://127.0.0.1:41417/https://datastax.jira.com/rest/api/2/search');
+const params = {
+  jql: 'filter = 23327',
+  startAt: 0,
+  maxResults: 10,
+  fields: [
+    'summary',
+    'status',
+    'issuetype',
+  ],
+};
+
+url.search = new URLSearchParams(params);
+
+export const command = dispatch => fetch(url, {
+  headers: {
+    Authorization: `Basic ${auth}`,
+  },
+})
+  .then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+    return {};
+  })
+  .then(data => dispatch({ type: 'FETCH_SUCCEEDED', data }));
+
+export const updateState = (event) => {
+  if (event.type === 'FETCH_SUCCEEDED') {
+    return event.data;
+  }
+  return {};
+};
+
+const Issue = ({ issuekey, summary, issuetype, status }) => (
+  <Item key={issuekey}>
+    <Type src={issuetype.iconUrl} />
+    <Key href={`https://datastax.jira.com/browse/${issuekey}`}>{issuekey}</Key>
+    <Summary href={`https://datastax.jira.com/browse/${issuekey}`}>{summary}</Summary>
+    <Status>{status.name}</Status>
+  </Item>
+);
+
+/*
+Issue.propTypes = {
+  key: PropTypes.string.isRequired,
+  summary: PropTypes.string.isRequired,
+};
+*/
+
+export const render = ({ issues = [] }) => (
+  <IssueList>
+    {issues.map(({ key, fields }) => (<Issue issuekey={key} {...fields} />))}
+  </IssueList>
+);
+
+/*
+render.propTypes = {
+  issues: PropTypes.arrayOf(PropTypes.Object),
+};
+
+render.defaultProps = {
+  issues: [],
+};
+*/
