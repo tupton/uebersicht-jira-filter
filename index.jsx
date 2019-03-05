@@ -93,7 +93,12 @@ export const updateState = (event) => {
   return {};
 };
 
-const Issue = ({ issuekey, summary, issuetype, status }) => (
+const Issue = ({
+  issuekey,
+  summary,
+  issuetype,
+  status,
+}) => (
   <Item key={issuekey}>
     <Type src={issuetype.iconUrl} />
     <Key href={`https://datastax.jira.com/browse/${issuekey}`}>{issuekey}</Key>
