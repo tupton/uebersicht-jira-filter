@@ -1,0 +1,21 @@
+{
+  "name": "uebersicht-jira-my-work.widget",
+  "version": "1.0.0",
+  "description": "An Übersicht widget to view a JIRA filter",
+  "main": "index.jsx",
+  "author": "Thomas Upton",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "base-64": "^0.1.0",
+    "eslint": "^4.19.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.3"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4"
+  }
+}
