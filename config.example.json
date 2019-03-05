@@ -1,0 +1,6 @@
+{
+    "username": "user@domain.com",
+    "password": "p@ssw0rd",
+    "jira_domain": "jira.com",
+    "jira_filter": "-1"
+}

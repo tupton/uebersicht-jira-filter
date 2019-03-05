@@ -1,5 +1,6 @@
+import base64 from 'base-64';
 import { styled } from 'uebersicht';
-import { auth } from './config';
+import * as config from './config.json';
 
 export const refreshFrequency = 1.8e6; // 30m
 
@@ -57,9 +58,9 @@ const Summary = styled('a')`
   text-decoration: none;
 `;
 
-const url = new URL('http://127.0.0.1:41417/https://datastax.jira.com/rest/api/2/search');
+const url = new URL(`http://127.0.0.1:41417/https://${config.jira_domain}/rest/api/2/search`);
 const params = {
-  jql: 'filter = 23327',
+  jql: `filter = ${config.jira_filter}`,
   startAt: 0,
   maxResults: 10,
   fields: [
@@ -71,6 +72,7 @@ const params = {
 
 url.search = new URLSearchParams(params);
 
+const auth = base64.encode(`${config.username}:${config.password}`);
 export const command = dispatch => fetch(url, {
   headers: {
     Authorization: `Basic ${auth}`,
