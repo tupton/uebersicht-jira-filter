@@ -1,6 +1,13 @@
 import base64 from 'base-64';
 import { styled } from 'uebersicht';
-import * as config from './config.json';
+import * as _config from './config.json';
+
+const defaults = {
+  startAt: 0,
+  maxResults: 10,
+};
+
+const config = Object.assign({}, defaults, _config);
 
 export const refreshFrequency = 1.8e6; // 30m
 
@@ -61,8 +68,8 @@ const Summary = styled('a')`
 const url = new URL(`http://127.0.0.1:41417/https://${config.jira_domain}/rest/api/2/search`);
 const params = {
   jql: `filter = ${config.jira_filter}`,
-  startAt: 0,
-  maxResults: 10,
+  startAt: config.startAt,
+  maxResults: config.maxResults,
   fields: [
     'summary',
     'status',
