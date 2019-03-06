@@ -1,5 +1,5 @@
 {
-  "name": "uebersicht-jira-my-work.widget",
+  "name": "uebersicht-jira-filter",
   "version": "0.1.0",
   "description": "An Übersicht widget to view a JIRA filter",
   "main": "index.jsx",
