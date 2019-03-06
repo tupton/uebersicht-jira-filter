@@ -1,6 +1,6 @@
 {
   "name": "uebersicht-jira-my-work.widget",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "An Übersicht widget to view a JIRA filter",
   "main": "index.jsx",
   "author": "Thomas Upton",
