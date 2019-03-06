@@ -11,7 +11,7 @@ install :
 	yarn install --production
 
 zip :
-	zip -r ./uebersicht-jira-filter.widget.zip . -x "*.git*" Makefile config.json package.json yarn.lock
+	zip -r ./uebersicht-jira-filter.widget.zip . -x "*.git*" "*.log" Makefile config.json package.json yarn.lock .eslintrc.yml .DS_Store
 
 widget : distclean \
 	clean \
