@@ -8,7 +8,7 @@ http://tracesof.net/uebersicht/
 
 Add the extracted widget to your widgets folder.
 
-Edit `config.json` to edit or add your jira domain and filter id. These two fields are required. The filter id can be found in the url to view a filter, e.g. [https://jira.atlassian.com/issues/?filter=17531](https://jira.atlassian.com/issues/?filter=17531) translates to:
+Rename `config.example.json` to `config.json` and edit or add your jira domain and filter id. These two fields are required. The filter id can be found in the url to view a filter, e.g. [https://jira.atlassian.com/issues/?filter=17531](https://jira.atlassian.com/issues/?filter=17531) translates to:
 
 ```json
 {
