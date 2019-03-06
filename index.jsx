@@ -139,7 +139,7 @@ export const render = ({ issues = [], error = '' }) => (
     </div>
   ) : (
     <IssueList>
-      {issues.map(({ key, fields }, idx) => (<Issue key={idx} issuekey={key} {...fields} />))}
+      {issues.map(({ key, fields }) => (<Issue key={key} issuekey={key} {...fields} />))}
     </IssueList>
   )
 );
