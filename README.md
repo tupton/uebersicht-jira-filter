@@ -12,8 +12,8 @@ Edit `config.json` to edit or add your jira domain and filter id. These two fiel
 
 ```json
 {
-  jira_domain: "jira.atlassian.com",
-  filter: "17531"
+  "jira_domain": "jira.atlassian.com",
+  "filter": "17531"
 }
 ```
 
