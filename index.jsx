@@ -87,20 +87,23 @@ if (config.username && config.password) {
   };
   opts.headers = headers;
 }
+
 export const command = dispatch => fetch(url, opts)
   .then((response) => {
-    if (response.ok) {
-      return response.json();
+    if (!response.ok) {
+      throw Error(`${response.status} ${response.statusText} - ${url}`);
     }
-    return {};
+    return response.json();
   })
-  .then(data => dispatch({ type: 'FETCH_SUCCEEDED', data }));
+  .then(data => dispatch({ type: 'FETCH_SUCCEEDED', data }))
+  .catch(error => dispatch({ type: 'FETCH_FAILED', error }));
 
-export const updateState = (event) => {
-  if (event.type === 'FETCH_SUCCEEDED') {
-    return event.data;
+export const updateState = (event, previousState) => {
+  switch (event.type) {
+    case 'FETCH_SUCCEEDED': return event.data;
+    case 'FETCH_FAILED': return { error: event.error.message };
+    default: return previousState;
   }
-  return {};
 };
 
 const Issue = ({
@@ -129,10 +132,16 @@ Issue.propTypes = {
 };
 */
 
-export const render = ({ issues = [] }) => (
-  <IssueList>
-    {issues.map(({ key, fields }, idx) => (<Issue key={idx} issuekey={key} {...fields} />))}
-  </IssueList>
+export const render = ({ issues = [], error = '' }) => (
+  error ? (
+    <div>
+      {`Error retrieving JIRA filter ${config.filter}: ${error}`}
+    </div>
+  ) : (
+    <IssueList>
+      {issues.map(({ key, fields }, idx) => (<Issue key={idx} issuekey={key} {...fields} />))}
+    </IssueList>
+  )
 );
 
 /*
