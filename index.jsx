@@ -1,4 +1,5 @@
 import base64 from 'base-64';
+/* eslint-disable-next-line import/no-unresolved */
 import { styled, css } from 'uebersicht';
 import * as _config from './config.json';
 
