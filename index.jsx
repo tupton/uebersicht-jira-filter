@@ -33,10 +33,13 @@ const IssueList = styled('ul')`
 
 const Item = styled('li')`
   margin: 0.25rem 0;
-  display: inline-flex;
+`;
+
+const ItemLink = styled('a')`
+  display: flex;
   align-items: center;
   justify-content: flex-start;
-`;
+`
 
 const Type = styled('img')`
   padding: 0 0.5rem 0 0;
@@ -51,14 +54,14 @@ const Status = styled('span')`
   color: rgba(200, 200, 200, 1.0);
 `;
 
-const Key = styled('a')`
+const Key = styled('span')`
   padding: 0 0.5rem 0 0;
   margin: 0;
   color: rgba(200, 200, 200, 1.0);
   text-decoration: none;
 `;
 
-const Summary = styled('a')`
+const Summary = styled('span')`
   padding: 0 0.5rem 0 0;
   margin: 0;
   color: white;
@@ -115,10 +118,12 @@ const Issue = ({
   const issueLink = `https://${config.jira_domain}/browse/${issuekey}`;
   return (
     <Item>
-      <Type src={issuetype.iconUrl} />
-      <Key href={issueLink}>{issuekey}</Key>
-      <Summary href={issueLink}>{summary}</Summary>
-      <Status>{status.name}</Status>
+      <ItemLink href={issueLink}>
+        <Type src={issuetype.iconUrl} />
+        <Key>{issuekey}</Key>
+        <Summary>{summary}</Summary>
+        <Status>{status.name}</Status>
+      </ItemLink>
     </Item>
   );
 };
