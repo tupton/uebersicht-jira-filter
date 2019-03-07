@@ -40,22 +40,24 @@ const ItemLink = styled('a')`
   align-items: center;
   justify-content: space-between;
   text-decoration: none;
-`
+`;
 
 const flexItem = css`
   flex: 1;
   white-space: nowrap;
 `;
 
-const flexItemNoGrow = css`
+const flexItemShrink = css`
   ${flexItem}
+  flex-shrink: 1;
   flex-grow: 0;
-`
+  flex-basis: content;
+`;
 
 const padded = css`
   padding: 0 0.5rem 0.1rem 0.25rem;
   margin: 0;
-`
+`;
 
 const small = css`
   font-variant: small-caps;
@@ -63,25 +65,23 @@ const small = css`
   color: rgba(200, 200, 200, 1.0);
   text-align: center;
   ${padded}
-`
+`;
 
 const Type = styled('img')`
   ${padded}
 `;
 
 const Status = styled('div')`
-  ${flexItemNoGrow}
+  ${flexItemShrink}
   ${small}
-  min-width: 10rem;
   border: 0.1rem solid #666;
   border-radius: 0.25rem;
   margin-right: 0.5rem;
 `;
 
 const Key = styled('span')`
-  ${flexItemNoGrow}
+  ${flexItemShrink}
   ${small}
-  min-width: 5rem;
 `;
 
 const Summary = styled('span')`
