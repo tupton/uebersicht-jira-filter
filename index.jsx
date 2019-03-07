@@ -1,5 +1,5 @@
 import base64 from 'base-64';
-import { styled } from 'uebersicht';
+import { styled, css } from 'uebersicht';
 import * as _config from './config.json';
 
 const defaults = {
@@ -25,8 +25,8 @@ const IssueList = styled('ul')`
   justify-content: space-between;
   margin: 0;
   padding: 0.25rem;
-  border: 1px solid #999;
-  -webkit-border-radius: 5px;
+  border: 0.1rem solid #999;
+  border-radius: 0.25rem;
   background-color: rgba(85, 85, 85, 0.7);
   list-style-type: none;
 `;
@@ -38,34 +38,57 @@ const Item = styled('li')`
 const ItemLink = styled('a')`
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
+  text-decoration: none;
+`
+
+const flexItem = css`
+  flex: 1;
+  white-space: nowrap;
+`;
+
+const flexItemNoGrow = css`
+  ${flexItem}
+  flex-grow: 0;
+`
+
+const padded = css`
+  padding: 0 0.5rem 0.1rem 0.25rem;
+  margin: 0;
+`
+
+const small = css`
+  font-variant: small-caps;
+  font-size: 0.9rem;
+  color: rgba(200, 200, 200, 1.0);
+  text-align: center;
+  ${padded}
 `
 
 const Type = styled('img')`
-  padding: 0 0.5rem 0 0;
-  margin: 0;
+  ${padded}
 `;
 
-const Status = styled('span')`
-  padding: 0 0.5rem 0 0;
-  margin: 0;
-  font-variant: small-caps;
-  font-size: 0.5em;
-  color: rgba(200, 200, 200, 1.0);
+const Status = styled('div')`
+  ${flexItemNoGrow}
+  ${small}
+  min-width: 10rem;
+  border: 0.1rem solid #666;
+  border-radius: 0.25rem;
+  margin-right: 0.5rem;
 `;
 
 const Key = styled('span')`
-  padding: 0 0.5rem 0 0;
-  margin: 0;
-  color: rgba(200, 200, 200, 1.0);
-  text-decoration: none;
+  ${flexItemNoGrow}
+  ${small}
+  min-width: 5rem;
 `;
 
 const Summary = styled('span')`
-  padding: 0 0.5rem 0 0;
-  margin: 0;
+  ${flexItem}
+  ${padded}
+  flex-grow: 2;
   color: white;
-  text-decoration: none;
 `;
 
 const url = new URL(`http://127.0.0.1:41417/https://${config.jira_domain}/rest/api/2/search`);
@@ -120,9 +143,9 @@ const Issue = ({
     <Item>
       <ItemLink href={issueLink}>
         <Type src={issuetype.iconUrl} />
-        <Key>{issuekey}</Key>
+        <Key>{issuekey.toLowerCase()}</Key>
+        <Status>{status.name.toLowerCase()}</Status>
         <Summary>{summary}</Summary>
-        <Status>{status.name}</Status>
       </ItemLink>
     </Item>
   );
