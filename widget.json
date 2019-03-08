@@ -1,0 +1,5 @@
+{
+  "name": "JIRA Filter Results",
+  "description": "Display a configurable number of results from a JIRA filter",
+  "author": "Thomas Upton"
+}
