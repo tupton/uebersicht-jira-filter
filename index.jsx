@@ -175,10 +175,12 @@ export const render = ({ issues = [], error = '' }) => (
 
 /*
 render.propTypes = {
-  issues: PropTypes.arrayOf(PropTypes.Object),
+  error: PropTypes.string,
+  issues: PropTypes.arrayOf(PropTypes.Object)
 };
 
 render.defaultProps = {
-  issues: [],
+  error: '',
+  issues: []
 };
 */
