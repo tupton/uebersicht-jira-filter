@@ -1,5 +1,5 @@
 import base64 from 'base-64';
-import { styled, css } from 'uebersicht';
+import { styled } from 'uebersicht';
 import * as _config from './config.json';
 
 const defaults = {
@@ -19,7 +19,7 @@ export const className = `
   z-index: 1;
 `;
 
-const IssueList = styled('ul')`
+const IssueList = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -31,62 +31,58 @@ const IssueList = styled('ul')`
   list-style-type: none;
 `;
 
-const Item = styled('li')`
+const Item = styled.li`
   margin: 0.25rem 0;
 `;
 
-const ItemLink = styled('a')`
+const ItemLink = styled.a`
   display: flex;
   align-items: center;
   justify-content: space-between;
   text-decoration: none;
 `;
 
-const flexItem = css`
-  flex: 1;
-  white-space: nowrap;
-`;
-
-const flexItemShrink = css`
-  ${flexItem}
-  flex-shrink: 1;
-  flex-grow: 0;
-  flex-basis: content;
-`;
-
-const padded = css`
+const Type = styled.img`
   padding: 0 0.5rem 0.1rem 0.25rem;
   margin: 0;
 `;
 
-const small = css`
+const Status = styled.div`
+  flex: 1;
+  white-space: nowrap;
+  flex-shrink: 1;
+  flex-grow: 0;
+  flex-basis: content;
   font-variant: small-caps;
   font-size: 0.9rem;
   color: rgba(200, 200, 200, 1.0);
   text-align: center;
-  ${padded}
-`;
-
-const Type = styled('img')`
-  ${padded}
-`;
-
-const Status = styled('div')`
-  ${flexItemShrink}
-  ${small}
+  padding: 0 0.5rem 0.1rem 0.25rem;
+  margin: 0;
   border: 0.1rem solid #666;
   border-radius: 0.25rem;
   margin-right: 0.5rem;
 `;
 
-const Key = styled('span')`
-  ${flexItemShrink}
-  ${small}
+const Key = styled.span`
+  flex: 1;
+  white-space: nowrap;
+  flex-shrink: 1;
+  flex-grow: 0;
+  flex-basis: content;
+  font-variant: small-caps;
+  font-size: 0.9rem;
+  color: rgba(200, 200, 200, 1.0);
+  text-align: center;
+  padding: 0 0.5rem 0.1rem 0.25rem;
+  margin: 0;
 `;
 
-const Summary = styled('span')`
-  ${flexItem}
-  ${padded}
+const Summary = styled.span`
+  flex: 1;
+  white-space: nowrap;
+  padding: 0 0.5rem 0.1rem 0.25rem;
+  margin: 0;
   flex-grow: 2;
   color: white;
 `;
