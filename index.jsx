@@ -1,6 +1,6 @@
 import base64 from 'base-64';
 import { styled } from 'uebersicht';
-import * as _config from './config.json';
+import _config from './config.json';
 
 const defaults = {
   startAt: 0,
