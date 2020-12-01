@@ -19,6 +19,16 @@ Rename `config.example.json` to `config.json` and edit or add your jira domain a
 
 `username` and `password` can be configured to access your own filters or to access a cloud JIRA instance that requires authorization.
 
+**IMPORTANT: if you are using a cloud JIRA instance, the authorization will NOT be your standard Atlassian username and password.** `username` should be the **email address** associated with your account. `password` should be an **API token** which you have explicitly generated for this widget.
+
+To generate an API token, visit https://id.atlassian.com/manage/api-tokens and click **Create API token**:
+
+![Create API token](api-token.png)
+
+Copy the result to your clipboard and paste it as the value of `password` in `config.json`:  
+
+![Credentials in config.json](config-json.png)
+
 `startsAt` and `maxResults` are also configurable if you want to change the starting point of the filter or how many results are returned and displayed, respectively. There are sensible defaults and their presence is not required in `config.json`.
 
 ### Übersicht, Accessibility, and clicking links
